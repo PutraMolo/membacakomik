@@ -1,0 +1,354 @@
+/* General Styling */
+body {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f0f2f5;
+    color: #333;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+/* Header */
+header {
+    background-color: #fff;
+    padding: 15px 0;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    /* --- Penambahan untuk Sticky Navbar --- */
+    position: sticky; /* Membuat header tetap di atas */
+    top: 0; /* Menempel di bagian atas layar */
+    z-index: 1001; /* Pastikan header selalu di atas konten lain */
+    /* --- Akhir Penambahan --- */
+}
+
+/* Kontainer utama untuk logo, search, dan hamburger */
+.header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.header-left {
+    display: flex;
+    align-items: center;
+}
+
+.header-right {
+    display: flex;
+    align-items: center;
+    gap: 15px; /* Jarak antara search bar dan hamburger */
+}
+
+.logo {
+    margin: 0;
+    font-size: 2em;
+    font-weight: 700;
+    color: #4CAF50; /* Green */
+}
+
+/* Search Bar - Selalu terlihat */
+.search-bar {
+    display: flex;
+    flex-grow: 1;
+    max-width: 300px; /* Batasi lebar search bar di desktop */
+}
+
+.search-bar input {
+    padding: 8px 12px;
+    border: 1px solid #ddd;
+    border-radius: 4px 0 0 4px;
+    outline: none;
+    flex-grow: 1;
+}
+
+.search-bar button {
+    padding: 8px 15px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 0 4px 4px 0;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.search-bar button:hover {
+    background-color: #45a049;
+}
+
+/* Hamburger Menu Button (hidden by default on desktop) */
+.hamburger {
+    display: none; /* Sembunyikan secara default di desktop */
+    background: none;
+    border: none;
+    font-size: 1.8em;
+    color: #333;
+    cursor: pointer;
+    padding: 5px;
+    outline: none;
+}
+
+/* Main Navigation (Menu Beranda, Genre, dll.) */
+nav {
+    display: flex; /* Untuk tata letak horizontal di desktop */
+    justify-content: center; /* Dorong ke kanan di desktop */
+    width: 100%; /* Ambil lebar penuh di bawah header-content */
+    margin-top: 10px; /* Jarak dari header-content */
+}
+
+nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex; /* Untuk item menu horizontal */
+}
+
+nav ul li {
+    margin-left: 25px;
+}
+
+nav ul li a {
+    font-weight: 600;
+    transition: color 0.3s ease;
+}
+
+nav ul li a:hover {
+    color: #4CAF50;
+}
+
+/* Hero Section */
+.hero {
+    background-color: #4CAF50;
+    color: white;
+    text-align: center;
+    padding: 60px 20px;
+    margin-top: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.hero h2 {
+    font-size: 2.5em;
+    margin-bottom: 15px;
+}
+
+.hero p {
+    font-size: 1.1em;
+    margin-bottom: 30px;
+}
+
+.cta-button {
+    background-color: #FFC107; /* Amber */
+    color: #333;
+    padding: 12px 25px;
+    border: none;
+    border-radius: 5px;
+    font-size: 1.1em;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.cta-button:hover {
+    background-color: #FFD54F;
+}
+
+/* Comic List Section */
+.comic-list {
+    margin-top: 40px;
+}
+
+.comic-list h3 {
+    font-size: 1.8em;
+    margin-bottom: 25px;
+    text-align: center;
+    color: #333;
+}
+
+.comic-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 25px;
+}
+
+.comic-card {
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    overflow: hidden;
+    transition: transform 0.3s ease;
+}
+
+.comic-card:hover {
+    transform: translateY(-5px);
+}
+
+.comic-card img {
+    width: 100%;
+    height: 250px; /* Fixed height for covers */
+    object-fit: cover; /* Ensures image covers the area */
+    display: block;
+}
+
+.comic-info {
+    padding: 15px;
+}
+
+.comic-info h4 {
+    margin: 0 0 8px;
+    font-size: 1.1em;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.comic-info p {
+    margin: 0;
+    font-size: 0.9em;
+    color: #666;
+}
+
+/* Footer */
+footer {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 20px 0;
+    margin-top: 50px;
+}
+
+/* --- Media Queries untuk Responsivitas --- */
+
+/* Perbaikan untuk rentang 681px - 768px dan umum <= 768px */
+@media (max-width: 768px) {
+    .header-content {
+        flex-direction: column; /* Tumpuk logo dan search/hamburger */
+        align-items: flex-start; /* Ratakan ke kiri */
+    }
+
+    .header-left {
+        width: 100%; /* Ambil lebar penuh */
+        justify-content: center; /* Pusatkan logo jika diinginkan */
+        margin-bottom: 10px; /* Jarak dari bawah */
+    }
+
+    .header-right {
+        width: 100%; /* Ambil lebar penuh */
+        justify-content: space-between; /* Search bar di kiri, hamburger di kanan */
+        margin-bottom: 10px; /* Jarak dari bawah */
+    }
+
+    .search-bar {
+        max-width: none; /* Izinkan search bar mengambil lebar penuh di sini */
+        flex-grow: 1; /* Biarkan search bar tumbuh */
+        margin-right: 0; /* Hapus margin kanan */
+    }
+    
+    .search-bar input {
+        border-radius: 4px 0 0 4px; /* Tetap dengan sudut */
+    }
+
+    .search-bar button {
+        border-radius: 0 4px 4px 0; /* Tetap dengan sudut */
+    }
+
+    .hamburger {
+        display: block; /* Tampilkan hamburger */
+        margin-left: 10px; /* Sedikit jarak dari search bar */
+    }
+
+    /* Navbar menu (Beranda, Genre, dll.) */
+    nav {
+        /* Sembunyikan menu navigasi utama di layar kecil secara default */
+        display: none; /* Sembunyikan secara default */
+        flex-direction: column;
+        padding: 20px;
+        background-color: #fff;
+        box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        position: absolute; /* Posisikan absolut relatif terhadap dokumen */
+        top: 100%; /* Mulai dari bawah header (karena header sticky) */
+        left: 0;
+        width: 100%;
+        transform: translateY(-100%); /* Sembunyikan ke atas dari posisi top */
+        transition: transform 0.3s ease-out, display 0.3s; /* Tambah transisi untuk display */
+        z-index: 999;
+        box-sizing: border-box;
+    }
+
+    nav.active {
+        display: flex; /* Tampilkan ketika active */
+        transform: translateY(0); /* Geser ke posisi terlihat */
+    }
+
+    nav ul {
+        flex-direction: column;
+        align-items: flex-start;
+        width: 100%;
+    }
+
+    nav ul li {
+        margin: 10px 0;
+        width: 100%;
+        text-align: center;
+        padding: 8px 0;
+        background-color: #f8f8f8;
+        border-radius: 4px;
+    }
+
+    nav ul li a {
+        display: block;
+    }
+
+    /* Hero Section di mobile */
+    .hero {
+        padding: 40px 15px;
+    }
+
+    .hero h2 {
+        font-size: 1.8em;
+    }
+
+    .hero p {
+        font-size: 1em;
+    }
+
+    /* Comic Grid di mobile */
+    .comic-grid {
+        grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+        gap: 15px;
+    }
+
+    .comic-card img {
+        height: 200px;
+    }
+}
+
+@media (max-width: 480px) {
+    /* Penyesuaian khusus untuk HP yang sangat kecil */
+    .logo {
+        font-size: 1.5em;
+        margin-right: 0; /* Tidak perlu margin kanan jika sudah di tengah */
+    }
+
+    .header-left {
+        justify-content: center; /* Pastikan logo tetap di tengah untuk layar sangat kecil */
+    }
+
+    .search-bar {
+        /* Tetap seperti di 768px, sudah responsif */
+        border-radius: 4px; /* Sudut penuh untuk input dan button */
+    }
+
+    .search-bar input, .search-bar button {
+        border-radius: 4px;
+    }
+}

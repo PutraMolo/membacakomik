@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KomiX Baca Komik Online</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <header>
+        <div class="container header-content">
+            <div class="header-left">
+                <h1 class="logo"><a href="index.html">KomiX</a></h1>
+            </div>
+
+            <div class="header-right">
+                <div class="search-bar">
+                    <input type="text" placeholder="Cari komik...">
+                    <button>Cari</button>
+                </div>
+                <button class="hamburger" id="hamburger-menu">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </div>
+
+        <nav id="main-nav" class="container">
+            <ul>
+                <li><a href="#" id="nav-beranda">Beranda</a></li>
+                <li><a href="#" id="nav-genre">Genre</a></li>
+                <li><a href="#" id="nav-populer">Populer</a></li>
+                <li><a href="#" id="nav-terbaru">Terbaru</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="container">
+        <section class="hero">
+            <h2>Baca Komik Favoritmu Kapan Saja, Di Mana Saja!</h2>
+            <p>Ribuan judul komik dari berbagai genre siap menemani harimu.</p>
+            <button class="cta-button">Mulai Baca Sekarang</button>
+        </section>
+
+        <section class="comic-list">
+            <h3 id="comic-list-title">Komik Terbaru</h3>
+            <div class="comic-grid" id="main-comic-display">
+                </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 KomiX. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

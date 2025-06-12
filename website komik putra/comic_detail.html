@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title id="comic-detail-title">Detail Komik</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1 class="logo"><a href="index.html">KomiX</a></h1>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Beranda</a></li>
+                    <li><a href="#">Genre</a></li>
+                    <li><a href="#">Populer</a></li>
+                    <li><a href="#">Terbaru</a></li>
+                </ul>
+            </nav>
+            <div class="search-bar">
+                <input type="text" placeholder="Cari komik...">
+                <button>Cari</button>
+            </div>
+        </div>
+    </header>
+
+    <main class="container comic-detail-page">
+        <section class="comic-info-section">
+            <div class="comic-cover-large">
+                <img id="detail-cover" src="https://via.placeholder.com/300x400/CCCCCC/FFFFFF?text=Komik+Cover" alt="Cover Komik">
+            </div>
+            <div class="comic-details">
+                <h2 id="detail-title">Judul Komik</h2>
+                <p class="comic-author">Penulis: <span id="detail-author">Nama Penulis</span></p>
+                <p class="comic-genre">Genre: <span id="detail-genre">Fantasi, Aksi</span></p>
+                <p class="comic-status">Status: <span id="detail-status">Ongoing</span></p>
+                <h3>Sinopsis</h3>
+                <p id="detail-sinopsis">
+                    Ini adalah deskripsi singkat tentang komik. Ceritanya berkisah tentang petualangan epik seorang pahlawan yang harus menyelamatkan dunia dari ancaman kegelapan. Dia akan bertemu dengan berbagai rintangan dan teman-teman baru di sepanjang perjalanannya.
+                </p>
+                <button class="cta-button" id="read-first-chapter">Baca Sekarang (Bab 1)</button>
+            </div>
+        </section>
+
+        <section class="chapter-list-section">
+            <h3>Daftar Bab</h3>
+            <ul id="chapters-container" class="chapter-list">
+                </ul>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 KomiX. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+        // Data komik spesifik untuk halaman detail ini (untuk demo frontend)
+        const currentComicData = {
+            id: 'petualangan-angkasa',
+            title: "Petualangan Angkasa",
+            author: "Budi Santoso",
+            genre: "Sci-Fi, Petualangan",
+            status: "Ongoing",
+            cover: "https://via.placeholder.com/300x400/4CAF50/FFFFFF?text=Angkasa",
+            sinopsis: "Di masa depan yang jauh, seorang penjelajah angkasa muda menemukan misteri kuno yang mengancam keseimbangan galaksi. Dia harus mengumpulkan kru yang beragam untuk mengungkap rahasia dan menyelamatkan peradaban.",
+            chapters: [
+                { id: 'ch1', title: "Bab 1: Panggilan dari Bintang", pages: ["https://via.placeholder.com/800x1200/F0F0F0/000000?text=Angkasa+Ch1+Pg1", "https://via.placeholder.com/800x1200/F0F0F0/000000?text=Angkasa+Ch1+Pg2", "https://via.placeholder.com/800x1200/F0F0F0/000000?text=Angkasa+Ch1+Pg3"] },
+                { id: 'ch2', title: "Bab 2: Jejak Peradaban Hilang", pages: ["https://via.placeholder.com/800x1200/F0F0F0/000000?text=Angkasa+Ch2+Pg1", "https://via.placeholder.com/800x1200/F0F0F0/000000?text=Angkasa+Ch2+Pg2"] },
+                { id: 'ch3', title: "Bab 3: Pertemuan Tak Terduga", pages: ["https://via.placeholder.com/800x1200/F0F0F0/000000?text=Angkasa+Ch3+Pg1", "https://via.placeholder.com/800x1200/F0F0F0/000000?text=Angkasa+Ch3+Pg2", "https://via.placeholder.com/800x1200/F0F0F0/000000?text=Angkasa+Ch3+Pg3", "https://via.placeholder.com/800x1200/F0F0F0/000000?text=Angkasa+Ch3+Pg4"] }
+            ]
+        };
+
+        document.addEventListener('DOMContentLoaded', () => {
+            document.getElementById('comic-detail-title').textContent = currentComicData.title;
+            document.getElementById('detail-cover').src = currentComicData.cover;
+            document.getElementById('detail-title').textContent = currentComicData.title;
+            document.getElementById('detail-author').textContent = currentComicData.author;
+            document.getElementById('detail-genre').textContent = currentComicData.genre;
+            document.getElementById('detail-status').textContent = currentComicData.status;
+            document.getElementById('detail-sinopsis').textContent = currentComicData.sinopsis;
+
+            const chaptersContainer = document.getElementById('chapters-container');
+            currentComicData.chapters.forEach(chapter => {
+                const li = document.createElement('li');
+                const a = document.createElement('a');
+                a.href = `read_comic.html?comicId=${currentComicData.id}&chapterId=${chapter.id}`;
+                a.textContent = chapter.title;
+                li.appendChild(a);
+                chaptersContainer.appendChild(li);
+            });
+
+            // Handle "Baca Sekarang" button
+            document.getElementById('read-first-chapter').addEventListener('click', () => {
+                if (currentComicData.chapters.length > 0) {
+                    const firstChapterId = currentComicData.chapters[0].id;
+                    window.location.href = `read_comic.html?comicId=${currentComicData.id}&chapterId=${firstChapterId}`;
+                } else {
+                    alert('Belum ada bab yang tersedia untuk komik ini.');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
